@@ -37,6 +37,7 @@ Enunț
 
 
 Descrierea implementării
+------------------------
 
 	Operația efectuată de către producător este cea de publicare a produselor sale. Implementarea
 	metodei publish va fi făcută în clasa Marketplace.
