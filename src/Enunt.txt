@@ -1,0 +1,73 @@
+Scop problema
+
+-	Implementarea unei aplicații concurente utilizând o problemă clasică 
+	(Multi Producer, Multi Consumer)
+
+
+Enunț
+
+-	Marketplace
+
+	Marketplace-ul este unul destul de simplu, cu două tipuri de produse (ceai și cafea) ce vor
+	fi comercializate de către producători. Acesta va fi intermediarul dintre producători și
+	consumatori, prin el realizându-se achiziția de produse: producătorul (producer) va produce
+	o anumită cantitate de produse de un anumit tip / mai multe tipuri cumpărătorul (consumer)
+	va cumpăra o anumită cantitate de produse de un tip / de mai multe tipuri. De asemenea,
+	Marketplace-ul va pune la dispoziția fiecărui cumpărător câte un coș de produse (cart)
+	(acesta va fi folosit pentru rezervarea produselor care se doresc a fi cumpărate).
+
+-	Producător
+
+	Vor exista mai mulți producători ce vor produce obiectele de tip cafea / ceai. Fiecare produs
+	va fi furnizat într-o anumită cantitate. Un producător poate produce atât obiecte de tip cafea,
+	cât și de tip ceai.
+
+-	Consumator
+
+	În momentul în care un client își dorește să cumpere anumite produse dintr-un magazin, acesta
+	va avea nevoie de un coș de cumpărături pe care să îl folosească în scopul rezervării acestora.
+	Astfel, de fiecare dată când un client își începe cumpărăturile, acesta va primi din partea
+	Marketplace-ului un coș de cumpărături, căruia îi va fi asociat un id. Clientul poate:
+
+    -	adăuga produse în coș ⇒ produsele respective devin indisponibile pentru ceilalți clienți
+    -	șterge produse din coș ⇒ produsele respective devin disponibile pentru ceilalți clienți
+    -	plasa o comandă
+
+
+Descrierea implementării
+
+	Operația efectuată de către producător este cea de publicare a produselor sale. Implementarea
+	metodei publish va fi făcută în clasa Marketplace.
+
+	Vor exista doua tipuri de operații pe care clientul le poate efectua asupra coșului de
+	cumpărături:
+
+    -	add_to_cart 		⇒ 	adaugă un produs în coș
+    -	remove_from_cart 	⇒ 	șterge un produs din coș
+
+	Ambele metode (add_to_cart și remove_from_cart) vor trebui implementate în clasa Marketplace.
+
+	În momentul în care un consumator adaugă un produs în coșul pentru cumpărături, produsul
+	respectiv va deveni indisponibil pentru ceilalți clienți ai Marketplace-ului. Clientul își
+	va putea plasa comanda prin apelarea metodei place_order (din clasa Marketplace). În cazul în
+	care un produs este eliminat din coșul pentru cumpărături, acesta devine disponibil pentru
+	ceilalți clienți ai Marketplace-ului.
+
+	Funcționalitatea clasei Producer este să:
+
+    -	furnizeze produselor pe care producătorul le pune la dispoziție
+
+	Funcționalitatea clasei Consumer este să:
+
+	-	primească id-ului coșului de cumpărături
+	-	adauge / elimine din coșul de cumpărături anumite cantități de produse
+	-	plaseze comenzi
+
+	Modulul Product conține reprezentările claselor Coffee și Tea.
+
+	Marketplace-ul limitează numărul de produse ce pot fi publicate de către un producător. În
+	momentul în care s-a atins limita, producătorul nu mai poate publica altele până nu sunt
+	cumpărate. El va reîncerca să publice după un timp definit în fișierul de test.
+
+	Dacă un cumpărător nu găsește un produs în marketplace, el va încerca mai târziu, după un
+	timp definit în fișierul de test. 

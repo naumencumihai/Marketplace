@@ -1,0 +1,34 @@
+Marketplace
+
+Am implementat in fisierul marketplace.py, pe langa clasa principala, Marketplace
+si o clasa helper - MaxLengthQueue - folosita pentru a reprezenta o coada individuala
+a unui producator.
+
+In constructorul clasei Marketplace am definit 4 campuri, cate 2 dictionare, folosite
+pentru a stoca informatiile despre producatori, respectiv cosuri de cumparaturi si 2
+locks pentru producator, respectiv cos.
+
+Metodele 'register_product' si 'new_cart' sunt implementate asemanator, ambele
+returneaza un id, care este reprezentat de pozitia producatorului, respenctiv a 
+cosului in dictionarul aferent, cu diferenta ca un producator se va folosi de
+clasa MaxLengthQueue, in timp ce un cos de o simpla lista.
+
+Metoda publish adauga un produs in marketplace, adica in coada specifica
+a producatorului specificat, doar daca aceasta exista si nu este plina.
+
+Metodele add_to_cart si remove_from_cart vor adauga respectiv elimina un produs
+din cosul specificat. Un produs va fi adaugat din coada primului producator
+care are respectivul produs in inventar (produsul va fi eliminat din coada
+producatorului), in cazul eliminarii din cos, procesul va fi executat in sens
+invers, adica, produsul este cautat in cos, in cazul in care acesta exista,
+va fi eliminat si adaugat in coada producatorului aferent produsului eliminat.
+
+Metoda place_order va afisa continutul cosului precizat.
+
+Clasele producer si consumer sunt implementate in fisierele 'producer.py',
+respectiv 'consumer.py' si ele reprezinta cele 2 entitati care interactioneaza
+prin intermediul marketplace-ului.
+
+Pentru implemetarea MaxLengthQueue m-am folosit de o implemetare partiala gasita
+pe StackExchange: 
+codereview.stackexchange.com/questions/159055/python-class-to-implement-a-list-with-a-size-limit
